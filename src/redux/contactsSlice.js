@@ -10,7 +10,7 @@ const contactsSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  extraReducers: (builder) => [
+  extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, (state) => {
         state.isLoading = true;
@@ -41,8 +41,8 @@ const contactsSlice = createSlice({
         state.items = state.items.filter(
           (item) => item.id !== action.payload.id
         );
-      }),
-  ],
+      });
+  },
 });
 
 export const selectFilteredContacts = createSelector(
